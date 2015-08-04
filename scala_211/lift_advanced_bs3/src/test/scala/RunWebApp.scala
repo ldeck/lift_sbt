@@ -1,13 +1,12 @@
 import org.eclipse.jetty.server.handler.ContextHandler
-import org.eclipse.jetty.server.nio.SelectChannelConnector
-import org.eclipse.jetty.server.{Handler, Server}
+import org.eclipse.jetty.server.{ServerConnector, Server}
 import org.eclipse.jetty.webapp.WebAppContext
 
 object RunWebApp extends App {
   val server = new Server
-  val scc = new SelectChannelConnector
-  scc.setPort(8080)
-  server.setConnectors(Array(scc))
+
+  val sc = new ServerConnector(server)
+  sc.setPort(8080)
 
   val context = new WebAppContext()
   context.setServer(server)

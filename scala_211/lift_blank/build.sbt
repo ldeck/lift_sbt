@@ -10,23 +10,23 @@ resolvers ++= Seq("snapshots"     at "https://oss.sonatype.org/content/repositor
                 "releases"        at "https://oss.sonatype.org/content/repositories/releases"
                 )
 
-seq(webSettings :_*)
-
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
-  val liftVersion = "2.6.2"
+  val liftVersion = "3.0-M6"
   Seq(
     "net.liftweb"       %% "lift-webkit"        % liftVersion        % "compile",
-    "net.liftmodules"   %% "lift-jquery-module_2.6" % "2.8",
-    "org.eclipse.jetty" % "jetty-webapp"        % "8.1.17.v20150415"  % "container,test",
-    "org.eclipse.jetty" % "jetty-plus"          % "8.1.17.v20150415"  % "container,test", // For Jetty Config
-    "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
+    "net.liftmodules"   %% "lift-jquery-module_3.0" % "2.9-SNAPSHOT" % "compile",
     "ch.qos.logback"    % "logback-classic"     % "1.1.3",
-    "org.specs2"        %% "specs2-core"        % "3.6.4"           % "test"
+    "org.specs2"        %% "specs2-core"        % "3.6.4"            % "test",
+    "javax.servlet"     % "javax.servlet-api"   % "3.1.0"            % "provided",
+    "org.eclipse.jetty" % "jetty-webapp"        % "9.2.13.v20150730"  % "jetty,test",
+    "org.eclipse.jetty" % "jetty-plus"          % "9.2.13.v20150730"  % "jetty,test" // For Jetty Config
   )
 }
 
 scalacOptions in Test ++= Seq("-Yrangepos")
+
+enablePlugins(JettyPlugin)

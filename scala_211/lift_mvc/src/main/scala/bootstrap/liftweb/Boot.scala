@@ -20,6 +20,17 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
 
+    LiftRules.securityRules = () => {
+     SecurityRules(content = Some(ContentSecurityPolicy(
+       scriptSources = List(
+         ContentSourceRestriction.UnsafeEval,
+         ContentSourceRestriction.Self),
+       styleSources = List(
+         ContentSourceRestriction.UnsafeInline,
+         ContentSourceRestriction.Self)
+       )))
+   }
+
     LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQueryArtifacts
 
     //Show the spinny image when an Ajax call starts

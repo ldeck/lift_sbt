@@ -8,16 +8,15 @@ import net.liftweb.util._
 import net.liftweb.common._
 import Helpers._
 import lib._
+import org.joda.time.DateTime
 import org.specs2.mutable.Specification
 import org.specs2.specification.AroundEach
 import org.specs2.execute.AsResult
 import org.specs2.execute.Result
 
-
 object HelloWorldTestSpecs extends Specification with AroundEach {
   val session = new LiftSession("", randomString(20), Empty)
-  val stableTime: Date = (10 minutes) ago
-
+  val stableTime: Date = (new DateTime).minusMinutes(10).toDate
 
   /**
    * For additional ways of writing tests,
@@ -41,4 +40,5 @@ object HelloWorldTestSpecs extends Specification with AroundEach {
       str must startWith("<span>Welcome to")
     }
   }
+
 }

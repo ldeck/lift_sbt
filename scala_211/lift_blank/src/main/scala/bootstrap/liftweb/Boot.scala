@@ -20,6 +20,17 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
 
+    LiftRules.securityRules = () => {
+     SecurityRules(content = Some(ContentSecurityPolicy(
+       scriptSources = List(
+         ContentSourceRestriction.UnsafeEval,
+         ContentSourceRestriction.Self),
+       styleSources = List(
+         ContentSourceRestriction.UnsafeInline,
+         ContentSourceRestriction.Self)
+       )))
+   }
+
     // Build SiteMap
     val entries = List(
       Menu.i("Home") / "index", // the simple way to declare a menu

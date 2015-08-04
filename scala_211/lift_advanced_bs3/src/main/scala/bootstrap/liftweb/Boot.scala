@@ -42,6 +42,17 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
 
+    LiftRules.securityRules = () => {
+     SecurityRules(content = Some(ContentSecurityPolicy(
+       scriptSources = List(
+         ContentSourceRestriction.UnsafeEval,
+         ContentSourceRestriction.Self),
+       styleSources = List(
+         ContentSourceRestriction.UnsafeInline,
+         ContentSourceRestriction.Self)
+       )))
+   }
+
 
     def sitemapMutators = User.sitemapMutator
     //The SiteMap is built in the Site object bellow 
@@ -51,8 +62,8 @@ class Boot {
     //see http://liftweb.net/lift_modules for more info
     FoBo.InitParam.JQuery=FoBo.JQuery1102  
     FoBo.InitParam.ToolKit=FoBo.Bootstrap320 
-    FoBo.init() 
-    
+    FoBo.init()
+
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
       Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
