@@ -46,6 +46,7 @@ class Boot {
      SecurityRules(content = Some(ContentSecurityPolicy(
        scriptSources = List(
          ContentSourceRestriction.UnsafeEval,
+         ContentSourceRestriction.UnsafeInline,
          ContentSourceRestriction.Self),
        styleSources = List(
          ContentSourceRestriction.UnsafeInline,
@@ -88,7 +89,7 @@ class Boot {
           case _ => Empty
         }
      }
-    ) 
+    )
     
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)

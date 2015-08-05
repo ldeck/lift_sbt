@@ -46,6 +46,7 @@ class Boot {
      SecurityRules(content = Some(ContentSecurityPolicy(
        scriptSources = List(
          ContentSourceRestriction.UnsafeEval,
+         ContentSourceRestriction.UnsafeInline,
          ContentSourceRestriction.Self),
        styleSources = List(
          ContentSourceRestriction.UnsafeInline,
@@ -89,7 +90,15 @@ class Boot {
 
     // Use HTML5 for rendering
     LiftRules.htmlProperties.default.set((r: Req) =>
-      new Html5Properties(r.userAgent))    
+      new Html5Properties(r.userAgent))
+
+    LiftRules.noticesAutoFadeOut.default.set( (notices: NoticeType.Value) => {
+        notices match {
+          case NoticeType.Notice => Full((8 seconds, 4 seconds))
+          case _ => Empty
+        }
+     }
+    )   
 
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
