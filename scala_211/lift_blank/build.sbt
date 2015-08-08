@@ -17,13 +17,13 @@ scalacOptions ++= Seq("-deprecation", "-unchecked")
 libraryDependencies ++= {
   val liftVersion = "3.0-M6"
   Seq(
-    "net.liftweb"       %% "lift-webkit"        % liftVersion        % "compile",
-    "net.liftmodules"   %% "lift-jquery-module_3.0" % "2.9-SNAPSHOT" % "compile",
-    "ch.qos.logback"    % "logback-classic"     % "1.1.3",
-    "org.specs2"        %% "specs2-core"        % "3.6.4"            % "test",
-    "javax.servlet"     % "javax.servlet-api"   % "3.1.0"            % "provided",
-    "org.eclipse.jetty" % "jetty-webapp"        % "9.2.13.v20150730"  % "jetty,test",
-    "org.eclipse.jetty" % "jetty-plus"          % "9.2.13.v20150730"  % "jetty,test" // For Jetty Config
+    "net.liftweb"       %% "lift-webkit"            % liftVersion        % "compile",
+    "net.liftmodules"   %% "lift-jquery-module_3.0" % "2.9"              % "compile",
+    "ch.qos.logback"    % "logback-classic"         % "1.1.3",
+    "org.specs2"        %% "specs2-core"            % "3.6.4"            % "test",
+    "javax.servlet"     % "javax.servlet-api"       % "3.1.0"            % "provided",
+    "org.eclipse.jetty" % "jetty-webapp"            % "9.2.13.v20150730" % "jetty,test",
+    "org.eclipse.jetty" % "jetty-plus"              % "9.2.13.v20150730" % "jetty,test" // For Jetty Config
   )
 }
 
