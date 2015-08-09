@@ -20,13 +20,13 @@ libraryDependencies ++= {
   Seq(
     "net.liftweb"       %% "lift-webkit"        % liftVersion        % "compile",
     "net.liftweb"       %% "lift-mapper"        % liftVersion        % "compile",
-    "net.liftmodules"   %% "fobo_3.0"           % "1.4-SNAPSHOT"     % "compile",
+    "net.liftmodules"   %% "fobo_3.0"           % "1.4"              % "compile",
     "ch.qos.logback"    % "logback-classic"     % "1.1.3",
     "org.specs2"        %% "specs2-core"        % "3.6.4"            % "test",
     "com.h2database"    % "h2"                  % "1.4.187",
     "javax.servlet"     % "javax.servlet-api"   % "3.1.0"            % "provided",
-    "org.eclipse.jetty" % "jetty-webapp"        % "9.2.13.v20150730"  % "jetty,test",
-    "org.eclipse.jetty" % "jetty-plus"          % "9.2.13.v20150730"  % "jetty,test" // For Jetty Config
+    "org.eclipse.jetty" % "jetty-webapp"        % "9.2.13.v20150730" % "jetty,test",
+    "org.eclipse.jetty" % "jetty-plus"          % "9.2.13.v20150730" % "jetty,test" // For Jetty Config
   )
 }
 
